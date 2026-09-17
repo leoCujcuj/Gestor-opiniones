@@ -1,0 +1,41 @@
+services:
+  app:
+    build: .
+    container_name: GestorOpinion_app
+    restart: always
+    ports:
+      - "${PORT}:3006"
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - postgres_db
+      - mongo_db
+
+  postgres_db:
+    image: postgres:16
+    container_name: opiniones_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - ${DB_EXTERNAL_PORT}:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mongo_db:
+    image: mongo:latest
+    container_name: opiniones_mongo
+    restart: always
+    ports:
+      - "${MONGO_PORT}:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  postgres_data:
+  mongo_data:

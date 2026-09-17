@@ -1,0 +1,30 @@
+# Dependencias locales
+node_modules
+.pnpm-store
+
+# Git
+.git
+.gitignore
+
+# Logs
+logs
+*.log
+
+# Archivos de entorno
+.env
+.env.*
+!.env.example
+
+# Builds locales
+dist
+build
+coverage
+
+# IDE
+.vscode
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.yml
+docker-compose.override.yml

@@ -1,0 +1,789 @@
+{
+  "info": {
+    "_postman_id": "71c00543-2dc8-4103-89f9-8a1172f2de2c",
+    "name": "Gestor de opiniones",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48329691",
+    "_collection_link": "https://go.postman.co/collection/48329691-71c00543-2dc8-4103-89f9-8a1172f2de2c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Rol",
+          "item": [
+            {
+              "name": "Request-role-upgrade",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{vault:authorization-secret}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"requestedRole\": \"ADMIN_SISTEMA\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3006/OpinionManagement/v1/auth/request-role-upgrade",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3006",
+                  "path": [
+                    "OpinionManagement",
+                    "v1",
+                    "auth",
+                    "request-role-upgrade"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "User",
+          "item": [
+            {
+              "name": "Update-profile",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{vault:authorization-secret}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Edvin",
+                      "type": "text",
+                      "uuid": "ab00c312-07c5-47ad-b6f1-ad864f470620"
+                    },
+                    {
+                      "key": "surname",
+                      "value": "Cuej",
+                      "type": "text",
+                      "uuid": "6d5685c7-d545-44d0-9f7b-cae64e5db4b6"
+                    },
+                    {
+                      "key": "username",
+                      "value": "edvin_2",
+                      "type": "text",
+                      "uuid": "42764628-96a4-4ec1-8333-51ece362fc02"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "55443322",
+                      "type": "text",
+                      "uuid": "7e3ae8fc-dfdd-49dc-be2b-c99c13a27e8b"
+                    },
+                    {
+                      "key": "profilePicture",
+                      "type": "file",
+                      "uuid": "47bdfc25-a4f4-46cc-b315-3fccd53791ef",
+                      "src": "postman-cloud:///1f10bb23-cff6-4210-a1f2-05f22b1d5974"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:3006/OpinionManagement/v1/user/update-profile",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3006",
+                  "path": [
+                    "OpinionManagement",
+                    "v1",
+                    "user",
+                    "update-profile"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update password",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{vault:authorization-secret}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://localhost:3006/OpinionManagement/v1/user/update-password",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3006",
+                  "path": [
+                    "OpinionManagement",
+                    "v1",
+                    "user",
+                    "update-password"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Edvin\",\r\n  \"surname\": \"Cuej\",\r\n  \"username\": \"ecujcuj-2024028\",\r\n  \"email\": \"ecujcuj-2024028@kinal.edu.gt\",\r\n  \"password\": \"Password\",\r\n  \"phone\": \"12343678\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify-email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"token\":\"{{vault:json-web-token}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/auth/verify-email",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "auth",
+                "verify-email"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"emailOrUsername\": \"ecujcuj-2024028@kinal.edu.gt\",\r\n  \"password\": \"Password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Publications",
+      "item": [
+        {
+          "name": "Get publications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/publications",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "publications"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Publications filters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/publications?category=tecnología&page=1&limit=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "publications"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "tecnología"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a publications (IdPublications)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/publications/:ID_PUBLICATION",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "publications",
+                ":ID_PUBLICATION"
+              ],
+              "variable": [
+                {
+                  "key": "ID_PUBLICATION",
+                  "value": "699a8c9d3bc3d9f7c91f6215"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Gets My Publications (JWT)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/publications/my",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "publications",
+                "my"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Publications (JWT)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Mi opinión\",\r\n    \"category\": \"tecnología\",\r\n    \"content\": \"Esta es mi opinion\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/publications",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "publications"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Publication (JWT, IdPublication)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "id",
+                "value": "699a8c9d3bc3d9f7c91f6215",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"title\": \"Mi opinión 2\",\r\n\"category\": \"ciencia\",\r\n\"content\": \"Contenido actualizado de mi publicación de mi opinion\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/publications/699a8c9d3bc3d9f7c91f6215",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "publications",
+                "699a8c9d3bc3d9f7c91f6215"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Publication (JWT, IdPublication)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "id",
+                "value": "699a8c9d3bc3d9f7c91f6215",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/publications/699a8c9d3bc3d9f7c91f6215",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "publications",
+                "699a8c9d3bc3d9f7c91f6215"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Coments",
+      "item": [
+        {
+          "name": "Get Comments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "ID_PUBLICACION",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/publications/:ID_PUBLICACION/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "publications",
+                ":ID_PUBLICACION",
+                "comments"
+              ],
+              "variable": [
+                {
+                  "key": "ID_PUBLICACION",
+                  "value": "699a9391ff426d8e460f32ef"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "With optional pagination",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create comments (JWT)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"content\": \"Este es mi comentario sobre la publicación\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/publications/:ID_PUBLICACION/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "publications",
+                ":ID_PUBLICACION",
+                "comments"
+              ],
+              "variable": [
+                {
+                  "key": "ID_PUBLICACION",
+                  "value": "699a9391ff426d8e460f32ef"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My comments (JWT)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/comments/my",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "comments",
+                "my"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My With optional pagination (JWT)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/comments/my?page=1&limit=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "comments",
+                "my"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update comment (JWT, ID_COMENTARIO)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"content\": \"Comentario corregido o actualizado\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/comments/:ID_COMENTARIO",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "comments",
+                ":ID_COMENTARIO"
+              ],
+              "variable": [
+                {
+                  "key": "ID_COMENTARIO",
+                  "value": "699a95ceff426d8e460f3308"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete comment (JWT, ID_COMENTARIO)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3006/OpinionManagement/v1/comments/:ID_COMENTARIO",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3006",
+              "path": [
+                "OpinionManagement",
+                "v1",
+                "comments",
+                ":ID_COMENTARIO"
+              ],
+              "variable": [
+                {
+                  "key": "ID_COMENTARIO",
+                  "value": "699a95ceff426d8e460f3308"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3006/OpinionManagement/v1/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3006",
+          "path": [
+            "OpinionManagement",
+            "v1",
+            "health"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

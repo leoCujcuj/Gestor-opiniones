@@ -1,0 +1,29 @@
+# Dependencias
+node_modules/
+.pnpm-debug.log*
+
+# Entorno y Secretos
+.env
+.env.*
+!.env.example
+
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+
+# IDEs y Editores
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Sistema Operativo
+.DS_Store
+Thumbs.db

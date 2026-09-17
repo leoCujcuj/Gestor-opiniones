@@ -1,0 +1,4 @@
+
+export const ADMIN_SISTEMA = 'ADMIN_SISTEMA';
+export const USUARIO = 'USUARIO';
+export const ALLOWED_ROLES = [ADMIN_SISTEMA, USUARIO];
